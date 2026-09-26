@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Attendance - CoachPro</title>
+
+    <link rel="stylesheet" href="/coachpro/CSS/style.css">
+    <link rel="stylesheet" href="/coachpro/CSS/attendance.css">
+
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            🎓 CoachPro
+        </div>
+
+        <nav>
+
+            <a href="/coachpro/index.html">
+                🏠 Dashboard
+            </a>
+
+            <a href="/coachpro/pages/student.html">
+                👨‍🎓 Students
+            </a>
+
+            <a href="/coachpro/pages/attendance.html" class="active">
+                📋 Attendance
+            </a>
+
+            <a href="/coachpro/pages/fees.html">
+                💰 Fees
+            </a>
+
+            <a href="/coachpro/pages/courses.html">
+                📚 Courses
+            </a>
+
+            <a href="/coachpro/pages/Reports.html">
+                📊 Reports
+            </a>
+
+            <a href="/coachpro/pages/settings.html">
+                ⚙️ Settings
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-content">
+
+
+        <!-- ================= HEADER ================= -->
+
+        <div class="page-header">
+
+            <div>
+
+                <h1>📋 Attendance</h1>
+
+                <p>
+                    Manage daily student attendance
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= ATTENDANCE CONTROLS ================= -->
+
+        <section class="attendance-controls">
+
+            <div class="control-group">
+
+                <label>
+                    Select Date
+                </label>
+
+                <input
+                    type="date"
+                    id="attendanceDate"
+                >
+
+            </div>
+
+
+            <div class="control-group">
+
+                <label>
+                    Course
+                </label>
+
+                <select id="courseFilter">
+
+                    <option value="All">
+                        All Courses
+                    </option>
+
+                    <option value="Spoken English">
+                        Spoken English
+                    </option>
+
+                    <option value="Pro Computer">
+                        Pro Computer
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="control-group">
+
+                <label>
+                    Search Student
+                </label>
+
+                <input
+                    type="text"
+                    id="searchAttendance"
+                    placeholder="Search student..."
+                >
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= SUMMARY ================= -->
+
+        <section class="attendance-summary">
+
+            <div class="summary-card">
+
+                <span>
+                    👨‍🎓 Total Students
+                </span>
+
+                <strong id="totalStudents">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-card present-card">
+
+                <span>
+                    ✅ Present
+                </span>
+
+                <strong id="presentCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-card absent-card">
+
+                <span>
+                    ❌ Absent
+                </span>
+
+                <strong id="absentCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <span>
+                    📊 Attendance
+                </span>
+
+                <strong id="attendancePercentage">
+                    0%
+                </strong>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= DAILY ATTENDANCE ================= -->
+
+        <section class="attendance-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        Daily Attendance
+                    </h2>
+
+                    <p id="selectedDateText">
+                        Select a date
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="save-attendance-btn"
+                    onclick="saveAttendance()"
+                >
+                    💾 Save Attendance
+                </button>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                #
+                            </th>
+
+                            <th>
+                                Student
+                            </th>
+
+                            <th>
+                                Phone
+                            </th>
+
+                            <th>
+                                Course
+                            </th>
+
+                            <th>
+                                Attendance
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="attendanceTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="5"
+                                class="empty-attendance"
+                            >
+                                No students found
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= ATTENDANCE HISTORY ================= -->
+
+        <section class="attendance-panel history-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        📅 Attendance History
+                    </h2>
+
+                    <p>
+                        Check attendance for previous dates
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="history-controls">
+
+                <div>
+
+                    <label>
+                        Select Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="historyDate"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Course
+                    </label>
+
+                    <select id="historyCourse">
+
+                        <option value="All">
+                            All Courses
+                        </option>
+
+                        <option value="Spoken English">
+                            Spoken English
+                        </option>
+
+                        <option value="Pro Computer">
+                            Pro Computer
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="history-summary">
+
+                <div class="history-stat">
+
+                    <span>
+                        👨‍🎓 Students
+                    </span>
+
+                    <strong id="historyStudents">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="history-stat">
+
+                    <span>
+                        ✅ Present
+                    </span>
+
+                    <strong id="historyPresent">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="history-stat">
+
+                    <span>
+                        ❌ Absent
+                    </span>
+
+                    <strong id="historyAbsent">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="history-stat">
+
+                    <span>
+                        📊 Attendance
+                    </span>
+
+                    <strong id="historyPercentage">
+                        0%
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Student
+                            </th>
+
+                            <th>
+                                Course
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="historyTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="3"
+                                class="empty-attendance"
+                            >
+                                Select a date
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= STUDENT ATTENDANCE REPORT ================= -->
+
+        <section class="attendance-panel report-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        👤 Student Attendance Report
+                    </h2>
+
+                    <p>
+                        View complete attendance history of a student
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="report-controls">
+
+                <div>
+
+                    <label>
+                        Select Student
+                    </label>
+
+                    <select id="reportStudent">
+
+                        <option value="">
+                            Select Student
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="student-report-summary">
+
+                <div class="report-stat">
+
+                    <span>
+                        📚 Total Classes
+                    </span>
+
+                    <strong id="reportTotalClasses">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="report-stat">
+
+                    <span>
+                        ✅ Present
+                    </span>
+
+                    <strong id="reportPresent">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="report-stat">
+
+                    <span>
+                        ❌ Absent
+                    </span>
+
+                    <strong id="reportAbsent">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="report-stat">
+
+                    <span>
+                        📊 Attendance
+                    </span>
+
+                    <strong id="reportPercentage">
+                        0%
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Student
+                            </th>
+
+                            <th>
+                                Course
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="reportTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="4"
+                                class="empty-attendance"
+                            >
+                                Select a student
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= MONTHLY ATTENDANCE ================= -->
+
+        <section class="attendance-panel monthly-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        📊 Monthly Attendance
+                    </h2>
+
+                    <p>
+                        View monthly attendance of all students
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="monthly-controls">
+
+                <div>
+
+                    <label>
+                        Select Month
+                    </label>
+
+                    <input
+                        type="month"
+                        id="attendanceMonth"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Course
+                    </label>
+
+                    <select id="monthlyCourse">
+
+                        <option value="All">
+                            All Courses
+                        </option>
+
+                        <option value="Spoken English">
+                            Spoken English
+                        </option>
+
+                        <option value="Pro Computer">
+                            Pro Computer
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="monthly-summary">
+
+                <div class="monthly-stat">
+
+                    <span>
+                        👨‍🎓 Students
+                    </span>
+
+                    <strong id="monthlyStudents">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="monthly-stat">
+
+                    <span>
+                        📚 Total Classes
+                    </span>
+
+                    <strong id="monthlyClasses">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="monthly-stat present">
+
+                    <span>
+                        ✅ Present
+                    </span>
+
+                    <strong id="monthlyPresent">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="monthly-stat absent">
+
+                    <span>
+                        ❌ Absent
+                    </span>
+
+                    <strong id="monthlyAbsent">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Student
+                            </th>
+
+                            <th>
+                                Course
+                            </th>
+
+                            <th>
+                                Classes
+                            </th>
+
+                            <th>
+                                Present
+                            </th>
+
+                            <th>
+                                Absent
+                            </th>
+
+                            <th>
+                                Attendance
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="monthlyTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="6"
+                                class="empty-attendance"
+                            >
+                                Select a month
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="/coachpro/JS/attendance.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Settings - CoachPro</title>
+
+    <link rel="stylesheet" href="/coachpro/CSS/style.css">
+
+    <style>
+        .settings-container {
+            padding: 30px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .settings-title {
+            margin-bottom: 25px;
+        }
+
+        .settings-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .settings-card h2 {
+            margin-bottom: 8px;
+        }
+
+        .settings-card p {
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .settings-input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        .save-btn {
+            padding: 12px 22px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .save-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .danger-btn {
+            padding: 12px 22px;
+            border: none;
+            border-radius: 8px;
+            background: #dc2626;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            🎓 CoachPro
+        </div>
+
+        <ul class="sidebar-menu">
+
+            <li>
+                <a href="/coachpro/index.html">📊 Dashboard</a>
+            </li>
+
+            <li>
+                <a href="/coachpro/pages/student.html">👨‍🎓 Students</a>
+            </li>
+
+            <li>
+                <a href="/coachpro/pages/attendance.html">📅 Attendance</a>
+            </li>
+
+            <li>
+                <a href="/coachpro/pages/fees.html">💰 Fees</a>
+            </li>
+
+            <li>
+                <a href="/coachpro/pages/courses.html">📚 Courses</a>
+            </li>
+
+            <li>
+                <a href="/coachpro/pages/Reports.html">📈 Reports</a>
+            </li>
+
+            <li>
+                <a href="/coachpro/pages/settings.html" class="active">
+                    ⚙️ Settings
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+    <!-- Main -->
+    <main class="main-content">
+
+        <div class="settings-container">
+
+            <div class="settings-title">
+                <h1>⚙️ Settings</h1>
+                <p>Manage your coaching centre settings.</p>
+            </div>
+
+
+            <!-- Coaching Centre -->
+            <div class="settings-card">
+
+                <h2>🏫 Coaching Centre</h2>
+
+                <p>Update your coaching centre information.</p>
+
+                <input
+                    type="text"
+                    id="coachingName"
+                    class="settings-input"
+                    placeholder="Coaching Centre Name">
+
+                <input
+                    type="text"
+                    id="coachingAddress"
+                    class="settings-input"
+                    placeholder="Address">
+
+                <input
+                    type="text"
+                    id="coachingPhone"
+                    class="settings-input"
+                    placeholder="Phone Number">
+
+                <button class="save-btn" onclick="saveSettings()">
+                    💾 Save Settings
+                </button>
+
+            </div>
+
+
+            <!-- Courses -->
+            <div class="settings-card">
+
+                <h2>📚 Courses</h2>
+
+                <p>Courses currently available in your coaching centre.</p>
+
+                <div>
+                    <strong>1. Spoken English</strong>
+                </div>
+
+                <br>
+
+                <div>
+                    <strong>2. Pro Computer</strong>
+                </div>
+
+            </div>
+
+
+            <!-- Data -->
+            <div class="settings-card">
+
+                <h2>🗄️ Data Management</h2>
+
+                <p>
+                    Your students, fees and attendance data is currently
+                    stored in this browser.
+                </p>
+
+                <button class="danger-btn" onclick="clearAllData()">
+                    🗑️ Clear All Data
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        function loadSettings() {
+
+            const settings =
+                JSON.parse(localStorage.getItem("coachSettings")) || {};
+
+            document.getElementById("coachingName").value =
+                settings.name || "";
+
+            document.getElementById("coachingAddress").value =
+                settings.address || "";
+
+            document.getElementById("coachingPhone").value =
+                settings.phone || "";
+        }
+
+
+        function saveSettings() {
+
+            const settings = {
+
+                name: document.getElementById("coachingName").value,
+
+                address: document.getElementById("coachingAddress").value,
+
+                phone: document.getElementById("coachingPhone").value
+
+            };
+
+            localStorage.setItem(
+                "coachSettings",
+                JSON.stringify(settings)
+            );
+
+            alert("Settings saved successfully! ✅");
+        }
+
+
+        function clearAllData() {
+
+            const confirmDelete =
+                confirm(
+                    "Are you sure? All student, fee and attendance data will be deleted."
+                );
+
+            if (!confirmDelete) {
+                return;
+            }
+
+            localStorage.removeItem("students");
+            localStorage.removeItem("attendance");
+            localStorage.removeItem("selectedStudentId");
+
+            alert("All data cleared.");
+
+            location.reload();
+        }
+
+
+        loadSettings();
+
+    </script>
+
+</body>
+
+</html>

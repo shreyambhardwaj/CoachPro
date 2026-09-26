@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CoachPro - Coaching Manager</title>
+
+    <link
+        rel="stylesheet"
+        href="CSS/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <span>CP</span>
+
+            <h2>
+                CoachPro
+            </h2>
+
+        </div>
+
+
+        <nav>
+
+            <a
+                href="#"
+                class="active"
+            >
+                <span>🏠</span>
+                Dashboard
+            </a>
+
+
+            <a href="/coachpro/pages/student.html">
+
+                <span>👨‍🎓</span>
+
+                Students
+
+            </a>
+
+
+            <a href="/coachpro/pages/attendance.html">
+
+                <span>📋</span>
+
+                Attendance
+
+            </a>
+
+
+            <a href="/coachpro/pages/fees.html">
+
+                <span>💰</span>
+
+                Fees
+
+            </a>
+
+
+            <a href="/coachpro/pages/courses.html">
+
+                <span>📚</span>
+
+                Courses
+
+            </a>
+
+
+            <a href="/coachpro/pages/Reports.html">
+
+                <span>📊</span>
+
+                Reports
+
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="/coachpro/pages/settings.html">
+
+                ⚙️ Settings
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+
+        <!-- ================= TOPBAR ================= -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Dashboard
+                </h1>
+
+                <p>
+                    Welcome back, Admin 👋
+                </p>
+
+            </div>
+
+
+            <div class="admin">
+
+                <div class="admin-avatar">
+                    A
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Admin
+                    </strong>
+
+                    <small>
+                        Administrator
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ================= STATS ================= -->
+
+        <section class="stats">
+
+
+            <!-- TOTAL STUDENTS -->
+
+            <div class="card students-card">
+
+                <div class="card-icon">
+                    👨‍🎓
+                </div>
+
+
+                <div>
+
+                    <p>
+                        Total Students
+                    </p>
+
+                    <h2 id="dashboardTotalStudents">
+                        0
+                    </h2>
+
+                    <small>
+                        Currently enrolled
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TODAY ATTENDANCE -->
+
+            <div class="card attendance-card">
+
+                <div class="card-icon">
+                    📋
+                </div>
+
+
+                <div>
+
+                    <p>
+                        Today's Attendance
+                    </p>
+
+                    <h2 id="dashboardPresent">
+                        0
+                    </h2>
+
+                    <small id="dashboardAttendancePercentage">
+                        0% present
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FEES COLLECTED -->
+
+            <div class="card fees-card">
+
+                <div class="card-icon">
+                    💰
+                </div>
+
+
+                <div>
+
+                    <p>
+                        Fees Collected
+                    </p>
+
+                    <h2 id="dashboardFeesCollected">
+                        ₹0
+                    </h2>
+
+                    <small>
+                        Paid fees
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FEES PENDING -->
+
+            <div class="card pending-card">
+
+                <div class="card-icon">
+                    ⚠️
+                </div>
+
+
+                <div>
+
+                    <p>
+                        Fees Pending
+                    </p>
+
+                    <h2 id="dashboardFeesPending">
+                        ₹0
+                    </h2>
+
+                    <small id="dashboardPendingStudents">
+                        0 students
+                    </small>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================= BOTTOM SECTION ================= -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- ================= COURSES ================= -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h2>
+                        Courses
+                    </h2>
+
+                    <button
+                        onclick="window.location.href='/coachpro/pages/student.html'"
+                    >
+                        + Add Student
+                    </button>
+
+                </div>
+
+
+
+                <!-- SPOKEN ENGLISH -->
+
+                <div class="course">
+
+                    <div class="course-icon">
+                        🗣️
+                    </div>
+
+
+                    <div class="course-info">
+
+                        <h3>
+                            Spoken English
+                        </h3>
+
+                        <p id="spokenStudents">
+                            0 Students
+                        </p>
+
+
+                        <div class="progress">
+
+                            <div
+                                id="spokenProgress"
+                                style="width: 0%;"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PRO COMPUTER -->
+
+                <div class="course">
+
+                    <div class="course-icon">
+                        💻
+                    </div>
+
+
+                    <div class="course-info">
+
+                        <h3>
+                            Pro Computer
+                        </h3>
+
+                        <p id="computerStudents">
+                            0 Students
+                        </p>
+
+
+                        <div class="progress">
+
+                            <div
+                                id="computerProgress"
+                                style="width: 0%;"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ================= RECENT STUDENTS ================= -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h2>
+                        Recent Students
+                    </h2>
+
+
+                    <button
+                        onclick="window.location.href='/coachpro/pages/student.html'"
+                    >
+                        View All
+                    </button>
+
+                </div>
+
+
+                <div id="recentStudents">
+
+                    <div class="dashboard-empty">
+
+                        No students added yet.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="JS/app.js"></script>
+
+</body>
+
+</html>

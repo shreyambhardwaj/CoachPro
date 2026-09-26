@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Reports - CoachPro</title>
+
+    <link
+        rel="stylesheet"
+        href="/coachpro/CSS/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/coachpro/CSS/Report.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <span>CP</span>
+
+            <h2>
+                CoachPro
+            </h2>
+
+        </div>
+
+
+        <nav>
+
+            <a href="/coachpro/index.html">
+
+                <span>🏠</span>
+
+                Dashboard
+
+            </a>
+
+
+            <a href="/coachpro/pages/student.html">
+
+                <span>👨‍🎓</span>
+
+                Students
+
+            </a>
+
+
+            <a href="/coachpro/pages/attendance.html">
+
+                <span>📋</span>
+
+                Attendance
+
+            </a>
+
+
+            <a href="/coachpro/pages/fees.html">
+
+                <span>💰</span>
+
+                Fees
+
+            </a>
+
+
+            <a href="/coachpro/pages/courses.html">
+
+                <span>📚</span>
+
+                Courses
+
+            </a>
+
+
+            <a
+                href="/coachpro/pages/Reports.html"
+                class="active"
+            >
+
+                <span>📊</span>
+
+                Reports
+
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="/coachpro/pages/settings.html">
+
+                ⚙️ Settings
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+
+        <!-- ================= HEADER ================= -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Reports
+                </h1>
+
+                <p>
+                    View coaching centre performance
+                </p>
+
+            </div>
+
+
+            <div class="admin">
+
+                <div class="admin-avatar">
+                    A
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Admin
+                    </strong>
+
+                    <small>
+                        Administrator
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ================= OVERVIEW ================= -->
+
+        <section class="report-stats">
+
+
+            <div class="report-card">
+
+                <div class="report-icon">
+                    👨‍🎓
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Students
+                    </span>
+
+                    <strong id="reportTotalStudents">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="report-card">
+
+                <div class="report-icon">
+                    📋
+                </div>
+
+                <div>
+
+                    <span>
+                        Present Today
+                    </span>
+
+                    <strong id="reportPresentToday">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="report-card">
+
+                <div class="report-icon">
+                    📈
+                </div>
+
+                <div>
+
+                    <span>
+                        Attendance
+                    </span>
+
+                    <strong id="reportAttendancePercentage">
+                        0%
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="report-card">
+
+                <div class="report-icon">
+                    💰
+                </div>
+
+                <div>
+
+                    <span>
+                        Fees Collected
+                    </span>
+
+                    <strong id="reportFeesCollected">
+                        ₹0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================= COURSE REPORT ================= -->
+
+        <section class="report-grid">
+
+
+            <div class="report-panel">
+
+                <div class="report-panel-header">
+
+                    <div>
+
+                        <h2>
+                            📚 Course Report
+                        </h2>
+
+                        <p>
+                            Students enrolled in each course
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="course-report">
+
+
+                    <div class="course-report-item">
+
+                        <div class="course-report-icon">
+                            🗣️
+                        </div>
+
+
+                        <div class="course-report-info">
+
+                            <div>
+
+                                <strong>
+                                    Spoken English
+                                </strong>
+
+                                <span id="reportSpokenCount">
+                                    0 Students
+                                </span>
+
+                            </div>
+
+
+                            <div class="report-progress">
+
+                                <div
+                                    id="reportSpokenProgress"
+                                    style="width: 0%;"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="course-report-item">
+
+                        <div class="course-report-icon">
+                            💻
+                        </div>
+
+
+                        <div class="course-report-info">
+
+                            <div>
+
+                                <strong>
+                                    Pro Computer
+                                </strong>
+
+                                <span id="reportComputerCount">
+                                    0 Students
+                                </span>
+
+                            </div>
+
+
+                            <div class="report-progress">
+
+                                <div
+                                    id="reportComputerProgress"
+                                    style="width: 0%;"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= FEES REPORT ================= -->
+
+            <div class="report-panel">
+
+                <div class="report-panel-header">
+
+                    <div>
+
+                        <h2>
+                            💰 Fees Report
+                        </h2>
+
+                        <p>
+                            Current fee collection status
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="fees-report">
+
+
+                    <div class="fees-report-row">
+
+                        <span>
+                            💵 Paid
+                        </span>
+
+                        <strong
+                            class="paid-text"
+                            id="reportPaidFees"
+                        >
+                            ₹0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="fees-report-row">
+
+                        <span>
+                            ⚠️ Pending
+                        </span>
+
+                        <strong
+                            class="pending-text"
+                            id="reportPendingFees"
+                        >
+                            ₹0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="fees-report-row total">
+
+                        <span>
+                            Total
+                        </span>
+
+                        <strong
+                            id="reportTotalFees"
+                        >
+                            ₹0
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================= ATTENDANCE REPORT ================= -->
+
+        <section class="report-panel attendance-report-panel">
+
+            <div class="report-panel-header">
+
+                <div>
+
+                    <h2>
+                        📊 Attendance Overview
+                    </h2>
+
+                    <p>
+                        Today's attendance summary
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="/coachpro/pages/attendance.html"
+                    class="report-action-btn"
+                >
+                    View Attendance
+                </a>
+
+            </div>
+
+
+            <div class="attendance-overview">
+
+
+                <div class="attendance-overview-card">
+
+                    <span>
+                        👨‍🎓 Total Students
+                    </span>
+
+                    <strong id="overviewTotal">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="attendance-overview-card present">
+
+                    <span>
+                        ✅ Present
+                    </span>
+
+                    <strong id="overviewPresent">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="attendance-overview-card absent">
+
+                    <span>
+                        ❌ Absent
+                    </span>
+
+                    <strong id="overviewAbsent">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="attendance-overview-card">
+
+                    <span>
+                        📈 Percentage
+                    </span>
+
+                    <strong id="overviewPercentage">
+                        0%
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= STUDENT SUMMARY ================= -->
+
+        <section class="report-panel student-summary-panel">
+
+            <div class="report-panel-header">
+
+                <div>
+
+                    <h2>
+                        👥 Student Summary
+                    </h2>
+
+                    <p>
+                        Recently added students
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="/coachpro/pages/student.html"
+                    class="report-action-btn"
+                >
+                    View Students
+                </a>
+
+            </div>
+
+
+            <div
+                class="student-report-table"
+                id="reportStudentsTable"
+            >
+
+                <div class="report-empty">
+
+                    Loading students...
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="/coachpro/JS/reports.js"></script>
+
+
+</body>
+
+</html>

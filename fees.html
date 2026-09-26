@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Fees - CoachPro</title>
+
+    <link
+        rel="stylesheet"
+        href="/coachpro/CSS/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/coachpro/CSS/fees.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <span>CP</span>
+
+            <h2>CoachPro</h2>
+
+        </div>
+
+
+        <nav>
+
+            <a href="/coachpro/index.html">
+                <span>🏠</span>
+                Dashboard
+            </a>
+
+
+            <a href="/coachpro/pages/student.html">
+                <span>👨‍🎓</span>
+                Students
+            </a>
+
+
+            <a href="/coachpro/pages/attendance.html">
+                <span>📋</span>
+                Attendance
+            </a>
+
+
+            <a
+                href="/coachpro/pages/fees.html"
+                class="active"
+            >
+                <span>💰</span>
+                Fees
+            </a>
+
+
+            <a href="/coachpro/pages/courses.html">
+                <span>📚</span>
+                Courses
+            </a>
+
+
+            <a href="/coachpro/pages/Reports.html">
+                <span>📊</span>
+                Reports
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="/coachpro/pages/settings.html">
+                ⚙️ Settings
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Fees Management</h1>
+
+                <p>
+                    Manage monthly student payments
+                </p>
+
+            </div>
+
+
+            <a
+                href="/coachpro/pages/student.html"
+                class="back-btn"
+            >
+                ← Students
+            </a>
+
+        </header>
+
+
+
+        <!-- ================= STUDENT SELECTOR ================= -->
+
+        <section class="fee-selector">
+
+            <div>
+
+                <label>
+                    Select Student
+                </label>
+
+
+                <select id="studentSelect">
+
+                    <option value="">
+                        Select a student
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="student-info">
+
+                <span id="selectedCourse">
+                    Course: -
+                </span>
+
+
+                <span id="selectedMonthlyFee">
+                    Monthly Fee: ₹0
+                </span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= SUMMARY ================= -->
+
+        <section class="fee-summary">
+
+
+            <div class="fee-card">
+
+                <div class="fee-icon">
+                    💰
+                </div>
+
+                <div>
+
+                    <p>
+                        Total Fees
+                    </p>
+
+                    <h2 id="totalFees">
+                        ₹0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="fee-card paid-card">
+
+                <div class="fee-icon">
+                    ✅
+                </div>
+
+                <div>
+
+                    <p>
+                        Paid
+                    </p>
+
+                    <h2 id="paidFees">
+                        ₹0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="fee-card pending-card">
+
+                <div class="fee-icon">
+                    ⏳
+                </div>
+
+                <div>
+
+                    <p>
+                        Pending
+                    </p>
+
+                    <h2 id="pendingFees">
+                        ₹0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="fee-card">
+
+                <div class="fee-icon">
+                    📅
+                </div>
+
+                <div>
+
+                    <p>
+                        Paid Months
+                    </p>
+
+                    <h2 id="paidMonths">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="fee-card pending-card">
+
+                <div class="fee-icon">
+                    📆
+                </div>
+
+                <div>
+
+                    <p>
+                        Pending Months
+                    </p>
+
+                    <h2 id="pendingMonths">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= FEE HISTORY ================= -->
+
+        <section class="fees-panel">
+
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        Monthly Fee History
+                    </h2>
+
+                    <p>
+                        Track every month's payment
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Month
+                            </th>
+
+                            <th>
+                                Amount
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Payment Date
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="feeTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="5"
+                                class="empty-fees"
+                            >
+
+                                👆 Select a student
+                                to view fees
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="/coachpro/JS/fees.js"></script>
+
+</body>
+
+</html>

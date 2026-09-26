@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Courses - CoachPro</title>
+
+    <link rel="stylesheet" href="/coachpro/CSS/style.css">
+
+    <style>
+        .courses-container {
+            padding: 30px;
+        }
+
+        .page-heading {
+            margin-bottom: 25px;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .course-card {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .course-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .course-card h2 {
+            margin-bottom: 8px;
+        }
+
+        .course-card p {
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .course-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .stat-box {
+            background: #f5f7fb;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .stat-box span {
+            display: block;
+            color: #777;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .stat-box strong {
+            font-size: 20px;
+        }
+
+        .course-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 11px 18px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .course-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .courses-container {
+                padding: 15px;
+            }
+
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            🎓 CoachPro
+        </div>
+
+        <ul class="sidebar-menu">
+
+            <li>
+                <a href="/coachpro/index.html">
+                    📊 Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="/coachpro/pages/student.html">
+                    👨‍🎓 Students
+                </a>
+            </li>
+
+            <li>
+                <a href="/coachpro/pages/attendance.html">
+                    📅 Attendance
+                </a>
+            </li>
+
+            <li>
+                <a href="/coachpro/pages/fees.html">
+                    💰 Fees
+                </a>
+            </li>
+
+            <li>
+                <a href="/coachpro/pages/courses.html" class="active">
+                    📚 Courses
+                </a>
+            </li>
+
+            <li>
+                <a href="/coachpro/pages/Reports.html">
+                    📈 Reports
+                </a>
+            </li>
+
+            <li>
+                <a href="/coachpro/pages/settings.html">
+                    ⚙️ Settings
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <div class="courses-container">
+
+            <div class="page-heading">
+
+                <h1>📚 Courses</h1>
+
+                <p>
+                    Manage and view your coaching centre courses.
+                </p>
+
+            </div>
+
+
+            <div class="course-grid">
+
+
+                <!-- Spoken English -->
+
+                <div class="course-card">
+
+                    <div class="course-icon">
+                        🗣️
+                    </div>
+
+                    <h2>Spoken English</h2>
+
+                    <p>
+                        English speaking and communication skills course.
+                    </p>
+
+                    <div class="course-stats">
+
+                        <div class="stat-box">
+
+                            <span>
+                                Students
+                            </span>
+
+                            <strong id="spokenStudents">
+                                0
+                            </strong>
+
+                        </div>
+
+                        <div class="stat-box">
+
+                            <span>
+                                Monthly Fees
+                            </span>
+
+                            <strong id="spokenFees">
+                                ₹0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <a
+                        href="/coachpro/pages/student.html"
+                        class="course-btn">
+                        👨‍🎓 View Students
+                    </a>
+
+                </div>
+
+
+                <!-- Pro Computer -->
+
+                <div class="course-card">
+
+                    <div class="course-icon">
+                        💻
+                    </div>
+
+                    <h2>Pro Computer</h2>
+
+                    <p>
+                        Computer skills and professional training course.
+                    </p>
+
+                    <div class="course-stats">
+
+                        <div class="stat-box">
+
+                            <span>
+                                Students
+                            </span>
+
+                            <strong id="computerStudents">
+                                0
+                            </strong>
+
+                        </div>
+
+                        <div class="stat-box">
+
+                            <span>
+                                Monthly Fees
+                            </span>
+
+                            <strong id="computerFees">
+                                ₹0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <a
+                        href="/coachpro/pages/student.html"
+                        class="course-btn">
+                        👨‍🎓 View Students
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        function loadCourses() {
+
+            const students =
+                JSON.parse(localStorage.getItem("students")) || [];
+
+
+            const spokenStudents =
+                students.filter(
+                    student =>
+                        student.course === "Spoken English"
+                );
+
+
+            const computerStudents =
+                students.filter(
+                    student =>
+                        student.course === "Pro Computer"
+                );
+
+
+            const spokenFees =
+                spokenStudents.reduce(
+                    (total, student) =>
+                        total + Number(
+                            student.monthlyFees ||
+                            student.fees ||
+                            0
+                        ),
+                    0
+                );
+
+
+            const computerFees =
+                computerStudents.reduce(
+                    (total, student) =>
+                        total + Number(
+                            student.monthlyFees ||
+                            student.fees ||
+                            0
+                        ),
+                    0
+                );
+
+
+            document.getElementById("spokenStudents")
+                .textContent =
+                spokenStudents.length;
+
+
+            document.getElementById("computerStudents")
+                .textContent =
+                computerStudents.length;
+
+
+            document.getElementById("spokenFees")
+                .textContent =
+                "₹" + spokenFees.toLocaleString("en-IN");
+
+
+            document.getElementById("computerFees")
+                .textContent =
+                "₹" + computerFees.toLocaleString("en-IN");
+
+        }
+
+
+        loadCourses();
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Students - CoachPro</title>
+
+    <link rel="stylesheet" href="/coachpro/CSS/style.css">
+    <link rel="stylesheet" href="/coachpro/CSS/student.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <span>CP</span>
+            <h2>CoachPro</h2>
+        </div>
+
+        <nav>
+
+            <a href="/coachpro/index.html">
+                <span>🏠</span>
+                Dashboard
+            </a>
+
+            <a href="/coachpro/pages/student.html" class="active">
+                <span>👨‍🎓</span>
+                Students
+            </a>
+
+            <a href="/coachpro/pages/attendance.html">
+                <span>📋</span>
+                Attendance
+            </a>
+
+            <a href="/coachpro/pages/fees.html">
+                <span>💰</span>
+                Fees
+            </a>
+
+            <a href="/coachpro/pages/courses.html">
+                <span>📚</span>
+                Courses
+            </a>
+
+            <a href="/coachpro/pages/Reports.html">
+                <span>📊</span>
+                Reports
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="/coachpro/pages/settings.html">
+                ⚙️ Settings
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+
+        <!-- ================= HEADER ================= -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Students</h1>
+
+                <p>
+                    Manage your coaching students and their monthly fees
+                </p>
+
+            </div>
+
+
+            <button
+                class="add-btn"
+                onclick="openStudentForm()"
+            >
+                + Add Student
+            </button>
+
+        </header>
+
+
+
+        <!-- ================= ADD STUDENT FORM ================= -->
+
+        <section
+            class="student-form"
+            id="studentForm"
+        >
+
+            <div class="form-header">
+
+                <div>
+
+                    <h2>Add New Student</h2>
+
+                    <p>
+                        Enter student's information
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="close-btn"
+                    onclick="closeStudentForm()"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+
+            <form id="studentFormData">
+
+
+                <div class="form-grid">
+
+
+                    <!-- Student Name -->
+
+                    <div class="input-group">
+
+                        <label>
+                            Student Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="studentName"
+                            placeholder="Enter student name"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- Phone -->
+
+                    <div class="input-group">
+
+                        <label>
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="studentPhone"
+                            placeholder="Enter phone number"
+                            maxlength="10"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- Course -->
+
+                    <div class="input-group">
+
+                        <label>
+                            Course
+                        </label>
+
+                        <select
+                            id="studentCourse"
+                            required
+                        >
+
+                            <option value="">
+                                Select Course
+                            </option>
+
+                            <option value="Spoken English">
+                                Spoken English
+                            </option>
+
+                            <option value="Pro Computer">
+                                Pro Computer
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- Monthly Fees -->
+
+                    <div class="input-group">
+
+                        <label>
+                            Monthly Fees
+                        </label>
+
+                        <input
+                            type="number"
+                            id="studentFees"
+                            placeholder="Example: 2000"
+                            min="0"
+                            required
+                        >
+
+                        <small>
+                            Amount student pays every month
+                        </small>
+
+                    </div>
+
+
+
+                    <!-- Admission Date -->
+
+                    <div class="input-group">
+
+                        <label>
+                            Admission Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="studentDate"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- FORM BUTTONS -->
+
+                <div class="form-buttons">
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        onclick="closeStudentForm()"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="save-btn"
+                    >
+                        Save Student
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+
+        <!-- ================= STUDENTS PANEL ================= -->
+
+        <section class="students-panel">
+
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        All Students
+                    </h2>
+
+                    <p id="studentCount">
+                        0 Students
+                    </p>
+
+                </div>
+
+
+                <input
+                    type="text"
+                    id="searchStudent"
+                    placeholder="🔍 Search student..."
+                >
+
+            </div>
+
+
+
+            <!-- ================= TABLE ================= -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Student
+                            </th>
+
+                            <th>
+                                Phone
+                            </th>
+
+                            <th>
+                                Course
+                            </th>
+
+                            <th>
+                                Monthly Fees
+                            </th>
+
+                            <th>
+                                Paid
+                            </th>
+
+                            <th>
+                                Pending
+                            </th>
+
+                            <th>
+                                Admission Date
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="studentTableBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="/coachpro/JS/student.js"></script>
+
+</body>
+
+</html>
